@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<!--
+Lab 2
+-->
+
+<!-- This is the head --> 
+<!-- All styles and javascript go inside the head -->
+    <head> <!-- appears at top of site-->
+        <meta charset ="utf-8" /> 
+        <title>US Quiz</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+        <script>
+            $(document).ready(function(){
+                //event listeners
+                $("button").on("click", gradeQuiz)
+                
+                //functions
+                function isFormValid(){ //checks if not empty
+                    let isValid = true;
+                    if ($("#q1").val() == "") {
+                        $("#validationFdbk").html("Question 1 wasn't answered"); //if empty put in
+                        //placeholder and returns false, form data not valid
+                    }
+                }//isForm
+                
+                function gradeQuiz(){ //function to grade the quiz, receives boolean from isformvalid
+                        
+                        $("#validationFdbk").html(""); //
+                        
+                        if (!isFormValid()){ 
+                            return;
+                            }
+                        
+                        //variables
+                        let score = 0;
+                        let q1Response = $("#q1").val().toLowerCase();
+                        
+                        //Question 1 
+                        if(q1Response=="sacramento"){
+                            
+                            $("#q1Feedback").html("Correct!");
+                            $("#q1Feedback").attr("class", "bg-success text-white");
+                            $("#markImg1").html("<img src ='img/checkmark.png' alt='checkmark'>");
+                            score +=20;
+                        }
+            
+                        else{
+                            $("#q1Feedback").html("Incorrect!");
+                            $("#q1Feedback").attr("class", "bg-warning text-white");
+                            $("#markImg1").html("<img src ='img/xmark.png' alt='checkmark'>");
+                        }
+                    
+                    $("#totalScore").html(`Total Score: ${score}`);
+                    //or                 ("Total Score: " + score);
+                            
+                }//gradeQUiz
+            })//ready
+        </script>
+        </head>
+        
+        <body class= "text-center">
+            
+            <h1 class = "jumbotron"> US Geography Quiz</h1>
+            
+            <h3><span id="markImg1"></span> What is the capital of California?</h3>
+            <input type="text" id = "q1">
+            
+            <div id="q1Feedback"></div>
+            
+            <br><br>
+            <h3 id="validationFdbk" class="bg-danger text-white"></h3>
+            <button class = "btn btn-outline-success">Submit Quiz</button>
+            <br>
+            <h2 id="totalScore" class="text-info"></h2> 
+            
+        </body>
+        
+        </html>
