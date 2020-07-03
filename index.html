@@ -60,7 +60,7 @@ Lab 2
                      $(`#q${index}Feedback`).html("Correct!");
                      $(`#q${index}Feedback`).attr("class", "bg-success text-white");
                      $(`#markImg${index}`).html("<img src ='img/checkmark.png' alt='checkmark'>");
-                     score +=20;
+                     score +=12.5;
                 }
                 
                 function wrongAnswer(index){
@@ -70,14 +70,7 @@ Lab 2
                      $(`#markImg${index}`).html("<img src ='img/xmark.png' alt='xmark'>");
     
                     }
-                    
-                function rightAnswer2(index){
-                    
-                     $(`#q${index}Feedback`).html("Correct!");
-                     $(`#q${index}Feedback`).attr("class", "bg-success text-white");
-                     $(`#markImg${index}`).html("<img src ='img/checkmark.png' alt='checkmark'>");
-                     score +=12.5;
-                }
+
                 
                 function gradeQuiz(){ //function to grade the quiz, receives boolean from isformvalid
                         
@@ -145,7 +138,7 @@ Lab 2
                         //question6
                           if(q6Response == "ca"){
                             
-                            rightAnswer2(6);
+                            rightAnswer(6);
                         }
             
                         else{
@@ -155,7 +148,7 @@ Lab 2
                         //Question 7
                         if(q7Response == "carson city"){
                                 
-                            rightAnswer2(7);
+                            rightAnswer(7);
                         }
             
                         else{
@@ -168,7 +161,7 @@ Lab 2
                         !$("#cc").is(":checked") && !$("#nyc").is(":checked"))
                             
                             {
-                                rightAnswer2(8);
+                                rightAnswer(8);
                             }
                         else   {
                             wrongAnswer(8);
